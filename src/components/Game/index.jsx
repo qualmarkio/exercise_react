@@ -1,5 +1,1 @@
-<html>
-  <div>
-    <h1>Hello World</h1>
-  </div>
-</html>
+<h1>Hello World</h1>
