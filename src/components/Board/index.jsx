@@ -1,17 +1,12 @@
 import React from "react";
-import Square from './components/Square';
+import Square from '../Square';
 
-class Board extends Reac.Components {
-  constructor(props){
-    super(props)
-  }
-
-  render(){
+const Board = () => {
  return(
   <div>
    <Square />
   </div>
-  );}
+  );
 }
 
 export default Board;

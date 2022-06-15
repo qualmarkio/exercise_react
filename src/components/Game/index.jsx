@@ -1,16 +1,11 @@
 import React from "react";
-import Board from './components/Board';
+import Board from '../Board';
 
-class Game extends React.Component {
- constructor(props){
-  super(props);
- }
-
-render(){
+const Game = () => {
  return (
     <div>
       <Board />
     </div>
-  );}
+  );
 }
 export default Game;
