@@ -1,11 +1,11 @@
 import React from "react";
 
-const Square = () => {
+const Square = (props) => {
  
   return (
-    <div>
-      <h1>Hello world from Square ! ! !</h1>
-    </div>
+    <button className="square">
+      {props.value}
+    </button>
   );
 }
 export default Square;

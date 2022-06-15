@@ -6,6 +6,7 @@ const Game = () => {
     <div>
       <Board />
     </div>
+    
   );
 }
 export default Game;
