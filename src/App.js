@@ -1,11 +1,16 @@
-import Game from './components/Game'
+import React from 'react';
+import Square from './components/Square'
 
-function App() {
-  return (
-    <div>
-      <Game />
-    </div>
-  );
+class App extends React.Component {
+  constructor(props){
+    super(props)
+  }
+
+  render(){
+    return (
+      <div>
+      <Square />
+      </div>
+    );}
 }
-
 export default App;
