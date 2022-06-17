@@ -6,9 +6,9 @@ const Square = (props) => {
   return (
     <button className="square" 
     onClick={() => 
-    setState({value: 'X'})}>
+    state.onClick()}>
      {state.value} 
     </button>
-  );
+);
 }
 export default Square;
