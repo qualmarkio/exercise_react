@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 
-const Square = (props) => {
- const [state, setState] = useState('');
+function Square(number) {
+  const [squares, setSquares] = useState(Array(9).fill(null));
 
-  return (
-    <button className="square" 
-    onClick={() => 
-    state.onClick()}>
-     {state.value} 
-    </button>
+ return (
+      <button
+        className="square"
+        onClick={() => setSquares({number: 'X'})}>
+        {squares.number}
+      </button>
 );
 }
 export default Square;

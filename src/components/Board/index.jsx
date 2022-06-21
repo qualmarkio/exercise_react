@@ -1,24 +1,16 @@
 import React, { useState } from "react";
 import Square from '../Square';
-import styled from 'styled-components';
 
 const Board = () => {
 
   const status = 'Next player: X';
-  const [squares, setSquares] = useState ([]);
 
-  function renderSquare(number){
+   function renderSquare(number) {
     return (
-    <Square
-      value={squares[number]} 
-      onClick={() =>
-      setSquares.handleClick(number)}
-    />
-    ); 
+      <Square />);
   }
   
-return (
-
+ return (
    <div>
         <div className="status">{status}</div>
         <div className="board-row">
@@ -39,5 +31,4 @@ return (
       </div>
       );
 }
-
 export default Board;
