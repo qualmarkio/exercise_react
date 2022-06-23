@@ -17,7 +17,7 @@ function Board() {
   }
 
   function selectSquare(square) {
-    dispatch({ type: 'SELECT_SQUARE', square })
+    dispatch({ type: 'Select Square', square })
   }
 
   const status = getStatus(squares, xIsNext)
@@ -57,7 +57,7 @@ function Board() {
   function gameReducer(state, action) {
     const { squares, xIsNext } = state
     switch (action.type) {
-      case 'SELECT_SQUARE': {
+      case 'Select Square': {
         const { square } = action
         const winner = Winner(squares)
         if (winner || squares[square]) {
