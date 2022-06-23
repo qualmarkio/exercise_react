@@ -1,5 +1,5 @@
-import React from 'react'
-import Winner from '../Winner'
+import React from 'react';
+import Winner from '../Winner';
 
 function Board() {
   const [state, dispatch] = React.useReducer(gameReducer, {
@@ -8,10 +8,10 @@ function Board() {
   })
   const { squares, xIsNext } = state
 
-  function renderSquare(index) {
+  function renderSquare(number) {
     return (
-      <button className='square' onClick={() => selectSquare(index)}>
-        {squares[index]}
+      <button className='square' onClick={() => selectSquare(number)}>
+        {squares[number]}
       </button>
     )
   }
@@ -74,7 +74,7 @@ function Board() {
       }
       default: {
         throw new Error(
-          `Unhandled action type: ${action.type}. Please fix it. Thank you.`
+          `Unhandled action type: ${action.type} Please fix it`
         )
       }
     }
