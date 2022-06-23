@@ -1,34 +1,83 @@
-import React, { useState } from "react";
-import Square from '../Square';
+import React from 'react'
+import Winner from '../Winner'
 
-const Board = () => {
+function Board() {
+  const [state, dispatch] = React.useReducer(gameReducer, {
+    squares: Array(9).fill(null),
+    xIsNext: true
+  })
+  const { squares, xIsNext } = state
 
-  const status = 'Next player: X';
-
-   function renderSquare(number) {
+  function renderSquare(index) {
     return (
-      <Square />);
+      <button className='square' onClick={() => selectSquare(index)}>
+        {squares[index]}
+      </button>
+    )
   }
-  
- return (
-   <div>
-        <div className="status">{status}</div>
-        <div className="board-row">
-          {renderSquare(0)}
-          {renderSquare(1)}
-          {renderSquare(2)}
-        </div>
-        <div className="board-row">
-          {renderSquare(3)}
-          {renderSquare(4)}
-          {renderSquare(5)}
-        </div>
-        <div className="board-row">
-          {renderSquare(6)}
-          {renderSquare(7)}
-          {renderSquare(8)}
-        </div>
+
+  function selectSquare(square) {
+    dispatch({ type: 'Select Square', square })
+  }
+
+  const status = getStatus(squares, xIsNext)
+
+  return (
+    <div>
+      <div className='status'>{status}</div>
+      <div className='board-row'>
+        {renderSquare(0)}
+        {renderSquare(1)}
+        {renderSquare(2)}
       </div>
-      );
+      <div className='board-row'>
+        {renderSquare(3)}
+        {renderSquare(4)}
+        {renderSquare(5)}
+      </div>
+      <div className='board-row'>
+        {renderSquare(6)}
+        {renderSquare(7)}
+        {renderSquare(8)}
+      </div>
+    </div>
+  )
+
+  function getStatus(squares, xIsNext) {
+    const winner = Winner(squares)
+    if (winner) {
+      return `Winner: ${winner}`
+    } else if (squares.every(Boolean)) {
+      return `Scratch: Cat's game`
+    } else {
+      return `Next player: ${xIsNext ? 'X' : '0'}`
+    }
+  }
+
+  function gameReducer(state, action) {
+    const { squares, xIsNext } = state
+    switch (action.type) {
+      case 'Select Square': {
+        const { square } = action
+        const winner = Winner(squares)
+        if (winner || squares[square]) {
+          return state
+        }
+        const squaresCopy = [...squares]
+        squaresCopy[square] = xIsNext ? 'X' : '0'
+        console.log('SQUARES', squares)
+        console.log('Play values', xIsNext)
+        return {
+          squares: squaresCopy,
+          xIsNext: !xIsNext
+        }
+      }
+      default: {
+        throw new Error(
+          `Unhandled action type: ${action.type}. Please fix it. Thank you.`
+        )
+      }
+    }
+  }
 }
-export default Board;
+export default Board
